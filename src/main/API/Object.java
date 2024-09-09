@@ -2,31 +2,41 @@ package main.API;
 
 import java.awt.*;
 
-class Object {
-    public Vector positon = new Vector(3f, 0f), size;
-    public Image texture;
-    public boolean initialized;
+public class Object {
+    private String objectName;
+    private Vector position, size;
+    private Image texture;
+    private boolean initialized = false;
+    private int id;
+
+    protected Object(String objectName, Vector position, Vector size, Image texture, int id) {
+        this.objectName = objectName;
+        this.position = position;
+        this.size = size;
+        this.texture = texture;
+        this.id = id;
+    }
+
+    protected Object(String objectName, int id) {
+        this.objectName = objectName;
+        this.id = id;
+    }
+
+    protected Object(String objectName, Vector position, Vector size, int id) {
+        this.objectName = objectName;
+        this.position = position;
+        this.size = size;
+        this.texture = null;
+        this.id = id;
+    }
+
+
+    public String getObjectName() {
+        return objectName;
+    }
+
+    public void setObjectName(String objectName) {
+        this.objectName = objectName;
+    }
 }
 
-class Vector{
-    private float x, y;
-
-    public Vector(float x, float y) {
-        this.x = x;
-        this.y = y;
-    }
-
-    public void x(float x){
-        this.x = x;
-    }
-    public float x(){
-        return x;
-    }
-
-    public void y(float y){
-        this.y = y;
-    }
-    public float y(){
-        return y;
-    }
-}

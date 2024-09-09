@@ -1,24 +1,15 @@
 package main.API;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class World {
-    private List<Object> objects = new ArrayList<>();
+    public ObjectList objectList = new ObjectList();
 
-    public List<Object> getObjects() {
-        return objects;
+    public void createObject(String objectName) {
+        Object el = new Object(objectName, objectList.getObjects().size());
+        objectList.addObjects(el);
     }
 
-    public void addObjects(Object el) {
-        this.objects.add(el);
-    }
-
-    public void removeObject(Object el){
-        this.objects.remove(el);
-    }
-
-    public void removeObject(int indexEl){
-        this.objects.remove(indexEl);
+    public void createObject(String objectName, Vector position, Vector size) {
+        Object el = new Object(objectName, position, size, objectList.getObjects().size());
+        objectList.addObjects(el);
     }
 }
